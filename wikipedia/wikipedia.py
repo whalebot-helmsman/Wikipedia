@@ -13,6 +13,7 @@ from .util import cache, stdout_encode, debug
 import re
 
 API_URL = 'https://en.wikipedia.org/w/api.php'
+SESSION = requests.session()
 RATE_LIMIT = False
 RATE_LIMIT_MIN_WAIT = None
 RATE_LIMIT_LAST_CALL = None
@@ -734,7 +735,7 @@ def _wiki_request(params):
     wait_time = (RATE_LIMIT_LAST_CALL + RATE_LIMIT_MIN_WAIT) - datetime.now()
     time.sleep(int(wait_time.total_seconds()))
 
-  r = requests.get(API_URL, params=params, headers=headers)
+  r = SESSION.get(API_URL, params=params, headers=headers)
 
   if RATE_LIMIT:
     RATE_LIMIT_LAST_CALL = datetime.now()
