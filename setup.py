@@ -21,7 +21,7 @@ version = 1.0
 
 setuptools.setup(
   name = "wikipedia",
-  version = '.'.join(version),
+  version = version,
   author = "Jonathan Goldsmith",
   author_email = "jhghank@gmail.com",
   description = "Wikipedia API for Python",
